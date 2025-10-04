@@ -20,7 +20,9 @@ jobs:
           cargo build --release --target wasm32-wasip1
 
       - name: Install ORAS
-        run: curl -sSL https://install.oras.io | sh
+        uses: oras-project/setup-oras@v1
+        with:
+          version: 1.2.2
 
       - name: Authenticate to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -40,5 +42,5 @@ jobs:
             --annotation org.opencontainers.image.url="https://github.com/${{ github.repository }}" \
             --annotation org.opencontainers.image.created="$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
             --annotation org.opencontainers.image.revision="${{ github.sha }}" \
-            --annotation org.opencontainers.image.vendor="Ark-MCP Maintainers"
-
+            --annotation org.opencontainers.image.vendor="Ark MCP"
+            
