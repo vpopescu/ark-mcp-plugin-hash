@@ -30,7 +30,7 @@ jobs:
       - name: Push Wasm Plugin with Metadata
         run: |
           oras push ghcr.io/${{ github.repository }}:${{ github.event.release.tag_name }} \
-            target/wasm32-wasip1/release/plugin.wasm \
+            target/wasm32-wasip1/release/hash_plugin.wasm \
             --artifact-type application/vnd.module.wasm.content.layer.v1+wasm \
             --annotation org.opencontainers.image.title="Ark MCP Test Hash plugin" \
             --annotation org.opencontainers.image.description="WASM test plugin for Ark MCP server" \
